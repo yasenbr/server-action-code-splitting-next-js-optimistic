@@ -8,6 +8,7 @@ import { addProductInDB } from "@/actions/serverAction";
 import DisplayResultProduct from "./DisplayResultProduct";
 import AddProductButton from "./AddProductButton";
 import { Product } from "@/typings";
+// dymanic import fo component
 const TextComponent = lazy(() => import("./TextComponent"));
 
 function HomePage({ products }: { products: Product[] }) {
@@ -17,12 +18,17 @@ function HomePage({ products }: { products: Product[] }) {
       return [...state, newProduct];
     }
   );
+
+  // code splitting for lazy load component tu use on button click
   const [component, setComponent] = useState<React.ComponentType<any>| null>(null);
 
   const onLoad = async () => {
     const TextComponentLoad = await TextComponent;
     setComponent(TextComponentLoad);
   };
+  // end code splitting
+  // on button component  we add suspense with falback to simulate a loading in case of slow connection
+  //see exempla on line 63 to line72
 
   return (
     <main>

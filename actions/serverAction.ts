@@ -25,7 +25,6 @@ export const addProductInDB = async (e: FormData) => {
     },
   });
   }catch(error){
-    console.log("error", error);
     revalidateTag("Products");
     return{
       error: "Something went wrong"
