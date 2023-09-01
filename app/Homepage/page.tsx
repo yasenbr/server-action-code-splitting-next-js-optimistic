@@ -5,13 +5,15 @@ import React, {
   lazy,
 } from "react";
 import { addProductInDB } from "@/actions/serverAction";
-import DisplayResultProduct from "./DisplayResultProduct";
-import AddProductButton from "./AddProductButton";
+import DisplayResultProduct from "../components/DisplayResultProduct";
+import AddProductButton from "../components/AddProductButton";
 import { Product } from "@/typings";
 // dymanic import fo component
-const TextComponent = lazy(() => import("./TextComponent"));
+const TextComponent = lazy(() => import("../components/TextComponent"));
 
 function HomePage({ products }: { products: Product[] }) {
+
+  
   const [optimisticProducts, addOptimisticProduct] = useOptimistic(
     products,
     (state, newProduct: Product) => {
@@ -20,7 +22,9 @@ function HomePage({ products }: { products: Product[] }) {
   );
 
   // code splitting for lazy load component tu use on button click
-  const [component, setComponent] = useState<React.ComponentType<any>| null>(null);
+  const [component, setComponent] = useState<React.ComponentType<any> | null>(
+    null
+  );
 
   const onLoad = async () => {
     const TextComponentLoad = await TextComponent;
@@ -31,7 +35,7 @@ function HomePage({ products }: { products: Product[] }) {
   //see exempla on line 63 to line72
 
   return (
-    <main>
+    <div>
       <div className="text-4xl font-bold text-center">Product List</div>
       <form
         action={async (formData) => {
@@ -74,7 +78,7 @@ function HomePage({ products }: { products: Product[] }) {
 
       <h2 className="font-bold p-5">Products Display</h2>
       <DisplayResultProduct products={optimisticProducts} />
-    </main>
+    </div>
   );
 }
 

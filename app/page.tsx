@@ -1,10 +1,8 @@
 
-
-import HomePage from "@/components/HomePage";
+import HomePage from "@/app/Homepage/page";
 import { Product } from "@/typings";
 
 export default async function Home() {
-  
   const res = await fetch(
     "https://64edb72e1f8721827141a1ee.mockapi.io/Products",
     {
@@ -17,9 +15,12 @@ export default async function Home() {
   );
 
   const products: Product[] = await res.json();
-  console.log(products);
 
   return (
-      <HomePage products={products} />
+    <div>
+      <main>
+        <HomePage products={products} />
+      </main>
+    </div>
   );
 }
