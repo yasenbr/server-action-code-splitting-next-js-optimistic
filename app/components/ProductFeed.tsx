@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import Image from "next/image";
 import Product from "./Product";
 
 interface Products {
@@ -12,7 +13,7 @@ interface Products {
 }
 
 function ProductFeed({ products }: { products: Products[] }) {
-  console.log("prod1:", products);
+  // console.log("prod1:", products);
   
   return (
     <main>
@@ -30,6 +31,13 @@ function ProductFeed({ products }: { products: Products[] }) {
               image={image}
             />
           ))}
+        <Image
+          className="md:col-span-full mx-auto rounded-lg"
+          src="https://links.papareact.com/dyz"
+          alt=""
+          width={1500}
+          height={250}
+        />
         <div className="md:col-span-2">
           {products
             .slice(4, 5)

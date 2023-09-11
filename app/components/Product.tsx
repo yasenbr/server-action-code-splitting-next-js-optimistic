@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
+import CurrencyFormat from "react-currency-format";
 
 const MAX_RATING = 6;
 const MIN_RATING = 1;
@@ -28,7 +29,6 @@ function Product({
 
   const hasPrime = Math.random() < 0.5;
   return (
-    <main>
       <div className="shadow-lg shadow-cyan-500/100 relative flex flex-col m-5 bg-white z-30 p-10 rounded-xl">
         <p className=" absolute top-2 right-2 text-xs italic text-gray-400">
           {category}
@@ -51,7 +51,7 @@ function Product({
         </div>
         <p className="text-xs my-2 line-clamp-2">{description}</p>
         <div className="mb-5 ">
-          <div value={price} displayType={"text"} prefix={"€"} />
+          <CurrencyFormat value={price} displayType={"text"} prefix={"€"} />
         </div>
         {hasPrime && (
           <div className="flex items-center space-x-2 -mt-5">
@@ -66,8 +66,11 @@ function Product({
             <p className="text-xs text-gray-500">FREE NEXT DAY Delivery</p>
           </div>
         )}
+
+        <button className="mt-auto button">
+          Add to Basket
+        </button>
       </div>
-    </main>
   );
 }
 
