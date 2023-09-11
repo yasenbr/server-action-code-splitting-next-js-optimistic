@@ -23,4 +23,7 @@
     .quantity {
         @apply p-2 text-xs rounded-lg text-gray-500 font-bold  md:text-sm bg-gradient-to-b focus:outline-none focus:ring-2 w-10 h-10;
     }
+    #body {
+        background-color: #d3d3d35e;
+    }
 }

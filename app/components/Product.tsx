@@ -55,7 +55,6 @@ function Product({
         </div>
         {hasPrime && (
           <div className="flex items-center space-x-2 -mt-5">
-            
             <p className="text-xs text-gray-500">FREE NEXT DAY Delivery</p>
           </div>
         )}
