@@ -42,7 +42,8 @@ function HomePage({ products }: { products: Product[] }) {
           const product_name = formData.get("product")?.toString();
           const product_price = formData.get("price")?.toString();
 
-          const newProduct: Omit<Product, "id"> = {
+          const newProduct: Omit<Product, "id"> & { id: number } = {
+            id: Date.now(), // assign a unique value to the id property
             product_name: product_name as string,
             product_price: product_price as string,
           };

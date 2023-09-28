@@ -23,8 +23,6 @@ function ProductList() {
   }, []);
 
 
-  
-
   return (
     <main className="max-w-screen-2xl mx-auto">
       <DynamicProductFeed products={products} />
